@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 public class Window {
     JTextArea textArea;
     JTextArea ta;
+    JTextField key;
+
     public Window() {
         JFrame frame = new JFrame("YouXOR");
 
@@ -29,7 +31,7 @@ public class Window {
         button.addActionListener(new Action());
         panel.add("Center", button);
 
-        JTextField key = new JTextField("KEY", 4);
+        key = new JTextField("KEY", 4);
         panel.add("South", key);
 
 
@@ -42,8 +44,11 @@ public class Window {
     class Action implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
-            ta.setText(textArea.getText());
+            String g = textArea.getText();
+            int a = Integer.parseInt(g);
+            int b = Integer.parseInt(key.getText());
+            int res = a^b;
+            ta.setText(Integer.toString(res));
 
         }
     }
