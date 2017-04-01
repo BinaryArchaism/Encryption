@@ -2,10 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by Dmitrii on 30.03.2017.
  */
+
 public class Window {
     JTextArea textArea;
     JTextArea ta;
@@ -41,15 +43,32 @@ public class Window {
         frame.pack();
         frame.setResizable(false);
     }
-    class Action implements ActionListener {
+    class Action implements ActionHandler {
         @Override
-        public void actionPerformed(ActionEvent e) {
-            String g = textArea.getText();
-            int a = Integer.parseInt(g);
-            int b = Integer.parseInt(key.getText());
-            int res = a^b;
-            ta.setText(Integer.toString(res));
+        public void actionPerformed(ActionEvent e) throws UnsupportedEncodingException  {
+            byte[] arr = toByte(textArea.getText());
 
+        }
+        public byte[] toByte(String s) throws UnsupportedEncodingException {
+            byte[] arr = s.getBytes("UTF-8");
+            return arr;
+        }
+        public String toStr(byte[] arr) throws UnsupportedEncodingException {
+            String s = new String(arr, "UTF-8");
+            return s;
+        }
+        public String byteToBin(byte b){
+            return String.format("%8s", Integer.toBinaryString(b & 0xFF)).replace(' ', '0');
+        }
+        /*
+         *  Переводим массив byte в строку с двоичным видом
+         */
+        public String bytesToBin(byte[] bytes){
+            StringBuilder stringBuilder = new StringBuilder();
+            for(byte b:bytes){
+                stringBuilder.append(byteToBin(b)).append(" ");
+            }
+            return stringBuilder.toString();
         }
     }
 }
