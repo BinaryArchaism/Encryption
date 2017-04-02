@@ -12,6 +12,7 @@ public class Window {
     JTextArea textArea;
     JTextArea ta;
     JTextField key;
+    JTextField codirovka;
 
     public Window() {
         JFrame frame = new JFrame("YouXOR");
@@ -30,13 +31,16 @@ public class Window {
         ta.setEditable(false);
         panel.add("East",ta);
 
-        JPanel panel2 = new JPanel(new GridLayout(1,2,10,10));
+        JPanel panel2 = new JPanel(new GridLayout(1,3,10,10));
         key = new JTextField("KEY", 4);
         panel2.add(key);
 
         JButton button = new JButton("Шифровать");
         button.addActionListener(new Action());
         panel2.add( button);
+
+        codirovka = new JTextField("UTF-8");
+        panel2.add(codirovka);
 
         mainPanel.add("North",panel);
         mainPanel.add("South",panel2);
@@ -64,10 +68,11 @@ public class Window {
                     count++;
                 }
                 try {
-                    ta.setText(new String(arr, "UTF-8"));
+                    ta.setText(new String(arr, codirovka.getText()));
                 } catch (UnsupportedEncodingException exp) {
                 }
             }
+            count = 0;
         }
         public byte bytes(byte[] arr) {
             int n = arr.length - 1;
