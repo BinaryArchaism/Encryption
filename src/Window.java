@@ -44,28 +44,29 @@ public class Window {
         frame.setResizable(false);
     }
     class Action implements ActionListener {
+        int count = 0;
         @Override
         public void actionPerformed(ActionEvent e) {
-
             byte[] k = (key.getText().getBytes());
             byte[] arr = (textArea.getText().getBytes());
             int n = arr.length;
             for (int i = 0; i < n; i++) {
-                arr[i] = (byte) (arr[i] ^ k[0]);
+                byte j = bytes(k);
+                arr[i] = (byte) (arr[i] ^ j);
+                count++;
             }
             try {
                 ta.setText(new String(arr, "UTF-8"));
             } catch (UnsupportedEncodingException exp) {}
         }
-        public String byteToBin(byte b){
-            return String.format("%8s", Integer.toBinaryString(b & 0xFF)).replace(' ', '0');
-        }
-        public String bytesToBin(byte[] bytes){
-            StringBuilder stringBuilder = new StringBuilder();
-            for(byte b:bytes){
-                stringBuilder.append(byteToBin(b)).append(" ");
+        public byte bytes(byte[] arr) {
+            int n = arr.length - 1;
+            if (count <= n)
+            return arr[count];
+            else {
+                count = 0;
+                return arr[count];
             }
-            return stringBuilder.toString();
         }
     }
 }
