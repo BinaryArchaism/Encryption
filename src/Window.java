@@ -15,31 +15,34 @@ public class Window {
 
     public Window() {
         JFrame frame = new JFrame("YouXOR");
+        frame.setLayout(new BorderLayout());
+        JPanel mainPanel = new JPanel(new BorderLayout());
+
 
         JPanel panel = new JPanel();
-        panel.setBackground(Color.lightGray);
-        panel.setLayout(new BorderLayout());
+        panel.setLayout(new GridLayout(1, 2, 10, 10));
 
-        textArea = new JTextArea("Введите текст", 4, 20);
-        textArea.setBackground(Color.white);
+        textArea = new JTextArea("Input", 4, 20);
         panel.add("West",textArea);
 
         ta = new JTextArea(4,20);
-        ta.setBackground(Color.white);
         ta.setEditable(false);
         panel.add("East",ta);
 
+        JPanel panel2 = new JPanel(new GridLayout(1,2,10,10));
+        key = new JTextField("KEY", 4);
+        panel2.add(key);
+
         JButton button = new JButton("Шифровать");
         button.addActionListener(new Action());
-        panel.add("Center", button);
+        panel2.add( button);
 
-        key = new JTextField("KEY", 4);
-        panel.add("South", key);
-
+        mainPanel.add("North",panel);
+        mainPanel.add("South",panel2);
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        frame.setContentPane(panel);
+        frame.setContentPane(mainPanel);
         frame.pack();
         frame.setResizable(false);
     }
