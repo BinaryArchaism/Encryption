@@ -17,6 +17,7 @@ public class Window {
         JFrame frame = new JFrame("YouXOR");
         frame.setLayout(new BorderLayout());
         JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.setSize(450,120);
 
 
         JPanel panel = new JPanel();
@@ -42,25 +43,31 @@ public class Window {
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        frame.setContentPane(mainPanel);
-        frame.pack();
+        frame.add("Center",mainPanel);
+        frame.setSize(500, 130);
         frame.setResizable(false);
     }
     class Action implements ActionListener {
         int count = 0;
         @Override
         public void actionPerformed(ActionEvent e) {
-            byte[] k = (key.getText().getBytes());
-            byte[] arr = (textArea.getText().getBytes());
-            int n = arr.length;
-            for (int i = 0; i < n; i++) {
-                byte j = bytes(k);
-                arr[i] = (byte) (arr[i] ^ j);
-                count++;
+            if (key.getText().equals("")) {
+                JOptionPane.showConfirmDialog(null,"Please, fill the key-area","Error!",JOptionPane.PLAIN_MESSAGE);
             }
-            try {
-                ta.setText(new String(arr, "UTF-8"));
-            } catch (UnsupportedEncodingException exp) {}
+            else {
+                byte[] k = (key.getText().getBytes());
+                byte[] arr = (textArea.getText().getBytes());
+                int n = arr.length;
+                for (int i = 0; i < n; i++) {
+                    byte j = bytes(k);
+                    arr[i] = (byte) (arr[i] ^ j);
+                    count++;
+                }
+                try {
+                    ta.setText(new String(arr, "UTF-8"));
+                } catch (UnsupportedEncodingException exp) {
+                }
+            }
         }
         public byte bytes(byte[] arr) {
             int n = arr.length - 1;
