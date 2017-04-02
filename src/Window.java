@@ -50,10 +50,12 @@ public class Window {
             byte[] k = (key.getText().getBytes());
             byte[] arr = (textArea.getText().getBytes());
             int n = arr.length;
-            for (int i = 0; i <= n; i++) {
-                arr[i] = (byte) (arr[i] ^ k[i]);
+            for (int i = 0; i < n; i++) {
+                arr[i] = (byte) (arr[i] ^ k[0]);
             }
-            ta.setText(bytesToBin(arr));
+            try {
+                ta.setText(new String(arr, "UTF-8"));
+            } catch (UnsupportedEncodingException exp) {}
         }
         public String byteToBin(byte b){
             return String.format("%8s", Integer.toBinaryString(b & 0xFF)).replace(' ', '0');
