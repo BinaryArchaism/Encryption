@@ -12,7 +12,10 @@ public class Window {
     JTextArea textArea;
     JTextArea ta;
     JTextField key;
-    JRadioButton r;
+    JComboBox comboBox;
+    String[] items = {
+            "UTF-8"
+    };
 
     public Window() {
         JFrame frame = new JFrame("YouXOR");
@@ -39,6 +42,9 @@ public class Window {
         button.addActionListener(new Action());
         panel2.add( button);
 
+        comboBox = new JComboBox(items);
+
+        panel2.add(comboBox);
 
         mainPanel.add("North",panel);
         mainPanel.add("South",panel2);
@@ -66,7 +72,7 @@ public class Window {
                     count++;
                 }
                 try {
-                    ta.setText(new String(arr, "UTF-8"));
+                    ta.setText(new String(arr, items[comboBox.getSelectedIndex()]));
                 } catch (UnsupportedEncodingException exp) {
                 }
             }
