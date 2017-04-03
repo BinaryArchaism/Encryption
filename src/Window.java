@@ -14,7 +14,8 @@ public class Window {
     JTextField key;
     JComboBox comboBox;
     String[] items = {
-            "UTF-8"
+            "UTF-8",
+            "KOI8"
     };
 
     public Window() {
