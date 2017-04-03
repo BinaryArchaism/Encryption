@@ -12,6 +12,7 @@ public class Window {
     JTextArea textArea;
     JTextArea ta;
     JTextField key;
+    JRadioButton r;
 
     public Window() {
         JFrame frame = new JFrame("YouXOR");
@@ -37,6 +38,7 @@ public class Window {
         JButton button = new JButton("Шифровать");
         button.addActionListener(new Action());
         panel2.add( button);
+
 
         mainPanel.add("North",panel);
         mainPanel.add("South",panel2);
