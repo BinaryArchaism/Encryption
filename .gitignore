@@ -1,3 +1,4 @@
 out/artifacts/Encryption_jar/Encryption.jar
 *.class
 .idea/workspace.xml
+out/production/Encryption/Window.class
