@@ -17,19 +17,19 @@ public class Window {
     public Window() {
         JFrame frame = new JFrame("YouXOR");
         frame.setLayout(new BorderLayout());
+
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setSize(450,120);
 
-
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(1, 2, 10, 10));
+        panel.setLayout(new GridLayout(1, 2, 20, 20));
 
         textArea = new JTextArea("Input", 4, 20);
-        panel.add("West",textArea);
+        panel.add(textArea);
 
         ta = new JTextArea(4,20);
         ta.setEditable(false);
-        panel.add("East",ta);
+        panel.add(ta);
 
         JPanel panel2 = new JPanel(new GridLayout(1,3,10,10));
         key = new JTextField("KEY", 4);
@@ -48,7 +48,7 @@ public class Window {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.add("Center",mainPanel);
-        frame.setSize(500, 130);
+        frame.pack();
         frame.setResizable(false);
     }
     class Action implements ActionListener {
