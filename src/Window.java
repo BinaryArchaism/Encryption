@@ -15,7 +15,10 @@ public class Window {
     JComboBox comboBox;
     String[] items = {
             "UTF-8",
-            "KOI8"
+            "KOI8",
+            "CP437",
+            "CP850",
+            "ISCII"
     };
 
     public Window() {
