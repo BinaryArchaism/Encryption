@@ -25,20 +25,19 @@ public class Window {
         JFrame frame = new JFrame("YouXOR");
         frame.setLayout(new BorderLayout());
 
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.setSize(450,140);
+        JPanel mainPanel = new JPanel(new FlowLayout());
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(1, 2, 20, 20));
 
-        textArea = new JTextArea("Input", 4, 20);
+        textArea = new JTextArea("Input", 5, 20);
         panel.add(textArea);
 
-        ta = new JTextArea(4,20);
+        ta = new JTextArea(5,20);
         ta.setEditable(false);
         panel.add(ta);
 
-        JPanel panel2 = new JPanel(new GridLayout(1,3,10,10));
+        JPanel panel2 = new JPanel(new GridLayout(1,3,20, 0 ));
         key = new JTextField("KEY", 4);
         panel2.add(key);
 
@@ -50,13 +49,13 @@ public class Window {
 
         panel2.add(comboBox);
 
-        mainPanel.add("North",panel);
-        mainPanel.add("South",panel2);
+        mainPanel.add(panel);
+        mainPanel.add(panel2);
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.add("Center",mainPanel);
-        frame.setSize(mainPanel.getSize());
+        frame.setSize(485,153);
         frame.setResizable(false);
     }
     class Action implements ActionListener {
