@@ -26,7 +26,7 @@ public class Window {
         frame.setLayout(new BorderLayout());
 
         JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.setSize(450,120);
+        mainPanel.setSize(450,140);
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(1, 2, 20, 20));
@@ -56,7 +56,7 @@ public class Window {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.add("Center",mainPanel);
-        frame.pack();
+        frame.setSize(mainPanel.getSize());
         frame.setResizable(false);
     }
     class Action implements ActionListener {
